@@ -2,7 +2,7 @@
 chcp 65001 >nul
 echo 📦 开始保存项目...
 
-cd /d "%~dp0"
+cd /d "D:\exam_prep_2026\shikongzhijiang.top"
 
 git add -A
 
