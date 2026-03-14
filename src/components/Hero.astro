@@ -3,103 +3,139 @@
 ---
 
 <section id="hero" class="py-16 md:py-24 relative overflow-hidden">
-  <!-- 背景装饰 - 漂浮的像素方块 -->
+  <!-- 背景装饰 - 像素云朵 -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <div class="absolute top-10 left-10 w-8 h-8 bg-[#4CAF50]/20 border-2 border-[#4CAF50]/30 animate-float-block" style="animation-delay: 0s;"></div>
-    <div class="absolute top-20 right-20 w-6 h-6 bg-[#8B4513]/20 border-2 border-[#8B4513]/30 animate-float-block" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-20 left-1/4 w-10 h-10 bg-[#757575]/20 border-2 border-[#757575]/30 animate-float-block" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-10 w-7 h-7 bg-[#654321]/20 border-2 border-[#654321]/30 animate-float-block" style="animation-delay: 0.5s;"></div>
-    <div class="absolute bottom-10 right-1/3 w-5 h-5 bg-[#4CAF50]/20 border-2 border-[#4CAF50]/30 animate-float-block" style="animation-delay: 1.5s;"></div>
+    <!-- 云朵 -->
+    <div class="absolute top-8 left-[10%] opacity-40 animate-float" style="animation-duration: 8s;">
+      <div class="flex items-end">
+        <div class="w-12 h-8 bg-white border-2 border-[#654321] rounded-full"></div>
+        <div class="w-16 h-10 bg-white border-2 border-[#654321] rounded-full -ml-4"></div>
+        <div class="w-12 h-8 bg-white border-2 border-[#654321] rounded-full -ml-4"></div>
+      </div>
+    </div>
+    <div class="absolute top-16 right-[15%] opacity-30 animate-float" style="animation-duration: 12s; animation-delay: 2s;">
+      <div class="flex items-end">
+        <div class="w-8 h-6 bg-white border-2 border-[#654321] rounded-full"></div>
+        <div class="w-12 h-8 bg-white border-2 border-[#654321] rounded-full -ml-3"></div>
+        <div class="w-8 h-6 bg-white border-2 border-[#654321] rounded-full -ml-3"></div>
+      </div>
+    </div>
+
+    <!-- 漂浮的像素方块 -->
+    <div class="absolute top-10 left-[20%] w-6 h-6 bg-[#4CAF50]/20 border-2 border-[#4CAF50]/30 animate-float-block" style="animation-delay: 0s;"></div>
+    <div class="absolute top-20 right-[25%] w-5 h-5 bg-[#8B4513]/20 border-2 border-[#8B4513]/30 animate-float-block" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-20 left-[30%] w-8 h-8 bg-[#757575]/20 border-2 border-[#757575]/30 animate-float-block" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 right-[10%] w-6 h-6 bg-[#654321]/20 border-2 border-[#654321]/30 animate-float-block" style="animation-delay: 0.5s;"></div>
+    <div class="absolute bottom-10 right-[35%] w-4 h-4 bg-[#4CAF50]/20 border-2 border-[#4CAF50]/30 animate-float-block" style="animation-delay: 1.5s;"></div>
+
+    <!-- 角落装饰 - 小草 -->
+    <div class="absolute bottom-4 left-4 opacity-30">
+      <span class="text-2xl">☘️</span>
+    </div>
+    <div class="absolute top-24 left-8 opacity-20">
+      <span class="text-xl">🌿</span>
+    </div>
   </div>
 
   <div class="container-pixel relative z-10">
-    <div class="flex flex-col md:flex-row items-center gap-8">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
       <!-- 像素风格头像 -->
       <div class="relative group">
         <!-- 外圈光晕 -->
-        <div class="absolute -inset-4 bg-[#4CAF50]/20 rounded-lg animate-pulse"></div>
+        <div class="absolute -inset-6 bg-[#4CAF50]/15 rounded-2xl animate-pulse"></div>
 
-        <div class="relative w-40 h-40 md:w-48 md:h-48 bg-[#4CAF50] border-4 border-[#654321] p-1 animate-float">
+        <div class="relative w-40 h-40 md:w-52 md:h-52 bg-[#4CAF50] border-4 border-[#654321] p-1 animate-float">
           <!-- 草方块顶层 -->
           <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
           <!-- 泥土层 -->
           <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
           <!-- 人物区域 -->
-          <div class="absolute inset-0 top-[25%] flex items-center justify-center">
-            <div class="w-20 h-24 md:w-24 md:h-28 bg-[#FFDAB9] border-2 border-[#654321] flex flex-col items-center justify-start pt-2">
+          <div class="absolute inset-0 top-[22%] flex items-center justify-center">
+            <div class="w-22 h-28 md:w-28 md:h-32 bg-[#FFDAB9] border-2 border-[#654321] flex flex-col items-center justify-start pt-2">
               <!-- 头发 -->
-              <div class="w-full h-4 bg-[#654321]"></div>
+              <div class="w-full h-5 bg-[#654321]"></div>
               <!-- 眼睛 -->
-              <div class="flex gap-4 mt-2">
-                <div class="w-2 h-2 bg-[#333]"></div>
-                <div class="w-2 h-2 bg-[#333]"></div>
+              <div class="flex gap-5 mt-2">
+                <div class="w-2.5 h-2.5 bg-[#333]"></div>
+                <div class="w-2.5 h-2.5 bg-[#333]"></div>
               </div>
               <!-- 嘴巴 -->
-              <div class="w-4 h-1 bg-[#8B4513] mt-1"></div>
+              <div class="w-5 h-1.5 bg-[#8B4513] mt-2"></div>
               <!-- 身体 -->
-              <div class="w-12 h-10 bg-[#4CAF50] mt-2 border-t-2 border-[#388E3C]"></div>
+              <div class="w-14 h-12 bg-[#4CAF50] mt-3 border-t-2 border-[#388E3C] flex justify-center">
+                <div class="w-8 h-2 bg-[#FFDAB9] mt-1"></div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 装饰性像素方块 -->
-        <div class="absolute -top-3 -right-3 w-8 h-8 bg-[#4CAF50] border-2 border-[#654321] animate-bounce" style="box-shadow: inset 2px 2px 0 rgba(255,255,255,0.3);">
+        <div class="absolute -top-4 -right-4 w-10 h-10 bg-[#4CAF50] border-2 border-[#654321] animate-bounce" style="box-shadow: inset 2px 2px 0 rgba(255,255,255,0.3);">
           <div class="w-full h-[30%] bg-[#66BB6A]"></div>
         </div>
-        <div class="absolute -bottom-2 -left-2 w-6 h-6 bg-[#8B4513] border-2 border-[#654321] animate-bounce" style="animation-delay: 0.5s;"></div>
+        <div class="absolute -bottom-3 -left-3 w-8 h-8 bg-[#8B4513] border-2 border-[#654321] animate-bounce" style="animation-delay: 0.5s;"></div>
       </div>
 
       <!-- 文字介绍 -->
-      <div class="text-center md:text-left">
+      <div class="text-center md:text-left flex-1">
         <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4 relative">
-          <span class="relative inline-block">
+          <span class="relative inline-block animate-fade-in">
             你好，我是山禾
             <!-- 文字装饰 -->
-            <span class="absolute -top-2 -left-2 w-3 h-3 bg-[#4CAF50]/30 border border-[#4CAF50]"></span>
-            <span class="absolute -bottom-1 -right-2 w-2 h-2 bg-[#8B4513]/50"></span>
+            <span class="absolute -top-3 -left-2 w-4 h-4 bg-[#4CAF50]/20 border border-[#4CAF50] rounded-sm"></span>
+            <span class="absolute -bottom-2 -right-3 w-3 h-3 bg-[#8B4513]/40"></span>
           </span>
         </h1>
-        <p class="text-lg text-[#666666] mb-6 max-w-lg leading-relaxed relative">
+        <p class="text-lg text-[#666666] mb-6 max-w-xl leading-relaxed relative animate-fade-in delay-100">
           <span class="relative z-10">
             一名热爱技术的开发者，专注于前端开发与用户体验设计。喜欢探索新技术，喜欢创造有趣的东西。
           </span>
-          <!-- 背景装饰线 -->
-          <span class="absolute -bottom-1 left-0 w-24 h-1 bg-[#4CAF50]/30"></span>
         </p>
 
         <!-- 状态标签 -->
-        <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-6">
-          <span class="px-3 py-1 bg-[#4CAF50]/10 border border-[#4CAF50]/30 text-[#388E3C] text-sm pixel-font">
-            <span class="inline-block w-2 h-2 bg-[#4CAF50] rounded-full mr-1 animate-pulse"></span>
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start mb-6 animate-fade-in delay-200">
+          <span class="px-4 py-1.5 bg-[#4CAF50]/10 border-2 border-[#4CAF50]/30 text-[#388E3C] text-sm pixel-font rounded-sm">
+            <span class="inline-block w-2 h-2 bg-[#4CAF50] rounded-full mr-1.5 animate-pulse"></span>
             学习中
           </span>
-          <span class="px-3 py-1 bg-[#8B4513]/10 border border-[#8B4513]/30 text-[#8B4513] text-sm pixel-font">
+          <span class="px-4 py-1.5 bg-[#8B4513]/10 border-2 border-[#8B4513]/30 text-[#8B4513] text-sm pixel-font rounded-sm">
             开发者
+          </span>
+          <span class="px-4 py-1.5 bg-[#FFD54F]/10 border-2 border-[#FFD54F]/30 text-[#8B6914] text-sm pixel-font rounded-sm">
+            ✨ 探索中
           </span>
         </div>
 
         <!-- 社交图标 -->
-        <div class="flex gap-4 justify-center md:justify-start">
+        <div class="flex gap-4 justify-center md:justify-start animate-fade-in delay-300">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 transition-all group">
-            <svg class="w-5 h-5 text-white group-hover:animate-spin" fill="currentColor" viewBox="0 0 24 24">
+             class="w-12 h-12 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 hover:-translate-y-1 transition-all group">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-             class="w-10 h-10 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 transition-all group">
-            <svg class="w-5 h-5 text-white group-hover:animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+             class="w-12 h-12 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 hover:-translate-y-1 transition-all group">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
             </svg>
           </a>
           <a href="mailto:example@email.com"
-             class="w-10 h-10 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 transition-all group">
-            <svg class="w-5 h-5 text-white group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             class="w-12 h-12 bg-[#654321] border-2 border-[#4CAF50] flex items-center justify-center hover:bg-[#4CAF50] hover:scale-110 hover:-translate-y-1 transition-all group">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
           </a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 向下滚动提示 -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce">
+    <div class="flex flex-col items-center text-[#8B4513]/50 text-xs pixel-font">
+      <span>SCROLL</span>
+      <span class="text-lg">↓</span>
     </div>
   </div>
 </section>

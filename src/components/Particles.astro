@@ -1,0 +1,84 @@
+---
+// Particles.astro - 飘落树叶粒子效果
+---
+
+<!-- 飘落树叶粒子容器 -->
+<div id="particles-container" class="fixed inset-0 pointer-events-none z-40 overflow-hidden" aria-hidden="true">
+  <!-- 树叶将通过JavaScript动态生成 -->
+</div>
+
+<script>
+  // 飘落树叶粒子系统
+  function createParticles() {
+    const container = document.getElementById('particles-container');
+    if (!container) return;
+
+    const particleCount = 15; // 树叶数量
+
+    // 树叶样式 - 像素风格
+    const leafStyles = [
+      '🍃', // 绿叶
+      '🍂', // 枯叶
+      '☘️', // 三叶草
+      '🌿', // 草药
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+      const leaf = document.createElement('div');
+      leaf.className = 'absolute text-2xl select-none';
+
+      // 随机选择树叶样式
+      leaf.textContent = leafStyles[Math.floor(Math.random() * leafStyles.length)];
+
+      // 随机初始位置
+      const startX = Math.random() * 100;
+      const startY = Math.random() * -100; // 从屏幕上方开始
+
+      // 随机参数
+      const duration = 10 + Math.random() * 10; // 10-20秒
+      const delay = Math.random() * 10;
+      const rotate = Math.random() * 360;
+
+      // 设置样式
+      leaf.style.cssText = `
+        left: ${startX}%;
+        top: ${startY}%;
+        animation: fall ${duration}s linear ${delay}s infinite;
+        opacity: 0.6;
+        filter: grayscale(30%);
+      `;
+
+      container.appendChild(leaf);
+    }
+
+    // 添加飘落动画关键帧
+    if (!document.getElementById('particle-styles')) {
+      const style = document.createElement('style');
+      style.id = 'particle-styles';
+      style.textContent = `
+        @keyframes fall {
+          0% {
+            transform: translateY(-50px) rotate(0deg) translateX(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          90% {
+            opacity: 0.6;
+          }
+          100% {
+            transform: translateY(100vh) rotate(720deg) translateX(100px);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  // 初始化
+  document.addEventListener('DOMContentLoaded', createParticles);
+  // 页面加载后也尝试创建（确保在SPA导航后也能工作）
+  document.addEventListener('astro:page-load', createParticles);
+</script>
