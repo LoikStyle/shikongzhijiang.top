@@ -1,0 +1,67 @@
+---
+// BlogList.astro - 文章列表组件
+import { getCollection } from 'astro:content';
+
+// 从内容集合获取博客文章
+const posts = await getCollection('blog');
+
+// 按日期排序
+const sortedPosts = posts.sort((a, b) =>
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// 格式化日期
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<section id="blog" class="py-16 bg-pattern">
+  <div class="container-pixel">
+    <h2 class="section-title text-center mb-12">文章</h2>
+
+    <!-- 像素装饰线 -->
+    <div class="pixel-line mb-12"></div>
+
+    <!-- 文章列表 -->
+    <div class="space-y-6">
+      {sortedPosts.map((post) => (
+        <a href={`/blog/${post.id}`}
+           class="block pixel-card p-6 hover:translate-x-2 transition-transform group">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex-1">
+              <h3 class="pixel-font text-xl text-[#388E3C] group-hover:text-[#4CAF50] transition-colors mb-2">
+                {post.data.title}
+              </h3>
+              <p class="text-[#666666] text-sm">
+                {post.data.description}
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[#8B4513] text-sm pixel-font">
+                {formatDate(post.data.pubDate)}
+              </span>
+              <!-- 箭头图标 -->
+              <span class="w-6 h-6 bg-[#4CAF50] border-2 border-[#654321] flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- 空状态提示 -->
+    {sortedPosts.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-[#666666] pixel-font">暂无文章，敬请期待...</p>
+      </div>
+    )}
+  </div>
+</section>

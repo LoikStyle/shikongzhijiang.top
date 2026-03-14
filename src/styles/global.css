@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* 颜色变量 */
+  --color-grass: #4CAF50;
+  --color-grass-dark: #388E3C;
+  --color-dirt: #8B4513;
+  --color-dirt-light: #A0522D;
+  --color-wood: #654321;
+  --color-stone: #757575;
+  --color-sky: #87CEEB;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-white: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #f5f5f5;
+  color: var(--color-text);
+}
+
+/* 像素风格标题字体 */
+.pixel-font {
+  font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+/* 像素方块效果 */
+.pixel-box {
+  box-shadow:
+    4px 0 0 0 var(--color-wood),
+    -4px 0 0 0 var(--color-wood),
+    0 -4px 0 0 var(--color-wood),
+    0 4px 0 0 var(--color-wood);
+  image-rendering: pixelated;
+}
+
+/* 草方块风格按钮 */
+.pixel-btn {
+  background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-grass-dark) 100%);
+  border: 4px solid var(--color-wood);
+  box-shadow:
+    inset 0 4px 0 rgba(255,255,255,0.2),
+    inset 0 -4px 0 rgba(0,0,0,0.2);
+  transition: all 0.1s;
+}
+
+.pixel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 4px 0 rgba(255,255,255,0.2),
+    inset 0 -4px 0 rgba(0,0,0,0.2),
+    0 4px 0 var(--color-wood);
+}
+
+.pixel-btn:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 4px 0 rgba(0,0,0,0.2),
+    inset 0 -4px 0 rgba(255,255,255,0.1);
+}
+
+/* 像素卡片 */
+.pixel-card {
+  background: white;
+  border: 4px solid var(--color-wood);
+  box-shadow: 4px 4px 0 var(--color-dirt);
+}
+
+/* 章节标题 */
+.section-title {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 2rem;
+  color: var(--color-grass-dark);
+  text-shadow: 2px 2px 0 var(--color-wood);
+}
+
+/* 像素装饰线条 */
+.pixel-line {
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-grass) 0px,
+    var(--color-grass) 8px,
+    var(--color-grass-dark) 8px,
+    var(--color-grass-dark) 16px
+  );
+}
+
+/* 响应式容器 */
+.container-pixel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 浮动动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 渐变背景 */
+.bg-pattern {
+  background-color: #f5f5f5;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 69, 19, 0.1) 0%, transparent 50%);
+}

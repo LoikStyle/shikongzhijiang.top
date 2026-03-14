@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// 格式化日期
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout title={`${post.data.title} - 山禾`} description={post.data.description}>
+  <Header />
+  <main class="pt-20">
+    <!-- 文章头部 -->
+    <section class="bg-white py-12 border-b-4 border-[#654321]">
+      <div class="container-pixel">
+        <a href="/#blog" class="inline-flex items-center gap-2 text-[#4CAF50] hover:text-[#388E3C] transition-colors mb-6 pixel-font">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          返回首页
+        </a>
+        <h1 class="pixel-font text-3xl md:text-4xl text-[#388E3C] mb-4">
+          {post.data.title}
+        </h1>
+        <p class="text-[#666666]">
+          {formatDate(post.data.pubDate)}
+        </p>
+      </div>
+    </section>
+
+    <!-- 文章内容 -->
+    <section class="py-12 bg-pattern">
+      <div class="container-pixel">
+        <article class="pixel-card p-8 max-w-3xl mx-auto prose prose-lg prose-headings:pixel-font prose-headings:text-[#388E3C] prose-a:text-[#4CAF50]">
+          <Content />
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

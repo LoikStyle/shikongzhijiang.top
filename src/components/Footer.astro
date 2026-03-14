@@ -1,0 +1,31 @@
+---
+// Footer.astro - 页脚组件
+---
+
+<footer class="bg-[#654321] text-white py-8">
+  <div class="container-pixel">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- 版权信息 -->
+      <div class="text-center md:text-left">
+        <p class="pixel-font text-lg">© 2024 山禾</p>
+        <p class="text-sm opacity-75">保留所有权利</p>
+      </div>
+
+      <!-- 装饰性像素方块 -->
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 bg-[#4CAF50] border-2 border-[#3E2723]"></div>
+        <div class="w-6 h-6 bg-[#8B4513] border-2 border-[#3E2723]"></div>
+        <div class="w-6 h-6 bg-[#757575] border-2 border-[#3E2723]"></div>
+      </div>
+
+      <!-- 备案信息 -->
+      <div class="text-center md:text-right">
+        <p class="text-sm opacity-75">
+          <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="hover:text-[#4CAF50] transition-colors">
+            粤ICP备xxxxxxxx号
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
