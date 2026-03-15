@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Particles from '../components/Particles.astro';
+---
+
+<Layout title="关于我 - 山禾">
+  <Particles />
+  <Header />
+
+  <main class="py-16">
+    <div class="container-pixel">
+      <!-- 页面标题 -->
+      <div class="text-center mb-16">
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4 animate-fade-in">
+          关于我
+        </h1>
+        <div class="pixel-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- 个人简介卡片 -->
+      <div class="max-w-4xl mx-auto">
+        <!-- 头像和基本信息 -->
+        <div class="flex flex-col md:flex-row gap-8 mb-12">
+          <!-- 头像 -->
+          <div class="flex-shrink-0 mx-auto md:mx-0">
+            <div class="relative w-40 h-40 md:w-52 md:h-52 bg-[#4CAF50] border-4 border-[#654321] p-1 animate-float">
+              <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
+              <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
+              <div class="absolute inset-0 top-[22%] flex items-center justify-center">
+                <div class="w-22 h-28 md:w-28 md:h-32 bg-[#FFDAB9] border-2 border-[#654321] flex flex-col items-center justify-start pt-2">
+                  <div class="w-full h-5 bg-[#654321]"></div>
+                  <div class="flex gap-5 mt-2">
+                    <div class="w-2.5 h-2.5 bg-[#333]"></div>
+                    <div class="w-2.5 h-2.5 bg-[#333]"></div>
+                  </div>
+                  <div class="w-5 h-1.5 bg-[#8B4513] mt-2"></div>
+                  <div class="w-14 h-12 bg-[#4CAF50] mt-3 border-t-2 border-[#388E3C] flex justify-center">
+                    <div class="w-8 h-2 bg-[#FFDAB9] mt-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 基本信息 -->
+          <div class="flex-1">
+            <h2 class="pixel-font text-2xl text-[#388E3C] mb-4">你好，我是山禾</h2>
+            <p class="text-[#666666] leading-relaxed mb-4">
+              一名热爱技术的开发者，专注于前端开发与用户体验设计。喜欢探索新技术，喜欢创造有趣的东西。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-[#4CAF50]/10 border border-[#4CAF50]/30 text-[#388E3C] text-sm pixel-font rounded-sm">
+                前端开发
+              </span>
+              <span class="px-3 py-1 bg-[#8B4513]/10 border border-[#8B4513]/30 text-[#8B4513] text-sm pixel-font rounded-sm">
+                UI/UX
+              </span>
+              <span class="px-3 py-1 bg-[#FFD54F]/10 border border-[#FFD54F]/30 text-[#8B6914] text-sm pixel-font rounded-sm">
+                探索者
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 个人经历 -->
+        <div class="space-y-6">
+          <div class="pixel-card p-6">
+            <h3 class="pixel-font text-xl text-[#388E3C] mb-4 flex items-center gap-2">
+              <span class="text-2xl">🎯</span>
+              我的目标
+            </h3>
+            <p class="text-[#666666] leading-relaxed">
+              成为一名称职的前端工程师，不断学习新技术，提升自己的技术栈。希望能够参与到有趣的项目中，创造有价值的产品。
+            </p>
+          </div>
+
+          <div class="pixel-card p-6">
+            <h3 class="pixel-font text-xl text-[#388E3C] mb-4 flex items-center gap-2">
+              <span class="text-2xl">💡</span>
+              我的理念
+            </h3>
+            <p class="text-[#666666] leading-relaxed">
+              技术是用来解决问题的，好的用户体验比花哨的功能更重要。保持好奇心，持续学习，享受创造的乐趣。
+            </p>
+          </div>
+
+          <div class="pixel-card p-6">
+            <h3 class="pixel-font text-xl text-[#388E3C] mb-4 flex items-center gap-2">
+              <span class="text-2xl">🎮</span>
+              兴趣爱好
+            </h3>
+            <ul class="text-[#666666] space-y-2">
+              <li class="flex items-center gap-2">
+                <span>☕</span> 喜欢喝咖啡提神
+              </li>
+              <li class="flex items-center gap-2">
+                <span>🎮</span> 喜欢玩MC放松
+              </li>
+              <li class="flex items-center gap-2">
+                <span>📚</span> 喜欢阅读技术书籍
+              </li>
+              <li class="flex items-center gap-2">
+                <span>🎵</span> 喜欢边听音乐边coding
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 联系方式按钮 -->
+        <div class="text-center mt-12">
+          <a href="/contact" class="btn-mc px-8 py-3 pixel-font text-white text-lg inline-block">
+            联系我 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

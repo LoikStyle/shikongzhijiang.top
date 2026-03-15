@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Particles from '../components/Particles.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  status: 'completed' | 'working' | 'planned';
+}
+
+const projects: Project[] = [
+  {
+    title: '个人网站',
+    description: '一个像素风格的个人展示网站，使用 Astro 构建。',
+    tech: ['Astro', 'Tailwind', 'TypeScript'],
+    status: 'working'
+  },
+  {
+    title: '待添加项目1',
+    description: '更多项目正在准备中...',
+    tech: ['React', 'Node.js'],
+    status: 'planned'
+  },
+  {
+    title: '待添加项目2',
+    description: '更多项目正在准备中...',
+    tech: ['Vue', 'Express'],
+    status: 'planned'
+  }
+];
+---
+
+<Layout title="项目作品 - 山禾">
+  <Particles />
+  <Header />
+
+  <main class="py-16">
+    <div class="container-pixel">
+      <!-- 页面标题 -->
+      <div class="text-center mb-16">
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4 animate-fade-in">
+          项目作品
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto animate-fade-in delay-100">
+          记录我做过的一些项目...
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-8"></div>
+      </div>
+
+      <!-- 项目网格 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {projects.map((project, index) => (
+          <div class="pixel-card overflow-hidden card-hover" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- 项目卡片头部 -->
+            <div class="h-32 bg-[#4CAF50] border-b-4 border-[#654321] relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-20 h-20 bg-[#8B4513] border-4 border-[#654321] flex items-center justify-center">
+                  <span class="text-4xl">📦</span>
+                </div>
+              </div>
+              <!-- 状态标签 -->
+              <div class="absolute top-2 right-2">
+                {project.status === 'completed' && (
+                  <span class="px-2 py-1 bg-[#4CAF50] text-white text-xs pixel-font">已完成</span>
+                )}
+                {project.status === 'working' && (
+                  <span class="px-2 py-1 bg-[#FFD54F] text-[#654321] text-xs pixel-font">进行中</span>
+                )}
+                {project.status === 'planned' && (
+                  <span class="px-2 py-1 bg-[#757575] text-white text-xs pixel-font">计划中</span>
+                )}
+              </div>
+            </div>
+
+            <!-- 项目内容 -->
+            <div class="p-6">
+              <h3 class="pixel-font text-xl text-[#388E3C] mb-2">{project.title}</h3>
+              <p class="text-[#666666] text-sm mb-4">{project.description}</p>
+
+              <!-- 技术栈 -->
+              <div class="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span class="px-2 py-1 bg-[#4CAF50]/10 border border-[#4CAF50]/30 text-[#388E3C] text-xs">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- 更多项目提示 -->
+      <div class="text-center mt-12 pixel-card p-8 max-w-2xl mx-auto">
+        <p class="text-[#666666] mb-4">更多项目正在准备中...</p>
+        <p class="text-sm text-[#888888]">欢迎关注我的 GitHub 了解最新动态</p>
+      </div>
+
+      <!-- 返回按钮 -->
+      <div class="text-center mt-12">
+        <a href="/" class="btn-mc px-8 py-3 pixel-font text-white text-lg inline-block">
+          ← 返回首页
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

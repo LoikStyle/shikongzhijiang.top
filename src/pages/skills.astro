@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Particles from '../components/Particles.astro';
+
+interface Skill {
+  name: string;
+  description: string;
+  icon: string;
+  level: number;
+}
+
+const skills: Skill[] = [
+  {
+    name: 'HTML/CSS',
+    description: '熟练掌握 HTML5、CSS3，能够实现响应式布局和动画效果',
+    icon: 'html',
+    level: 5
+  },
+  {
+    name: 'JavaScript',
+    description: '熟悉 ES6+ 语法，了解 TypeScript，能够开发交互式网页',
+    icon: 'js',
+    level: 4
+  },
+  {
+    name: 'React',
+    description: '能够使用 React 构建单页应用，熟悉 Hooks 和状态管理',
+    icon: 'react',
+    level: 4
+  },
+  {
+    name: 'Vue',
+    description: '掌握 Vue3 组合式 API，有实际项目开发经验',
+    icon: 'vue',
+    level: 3
+  },
+  {
+    name: 'Node.js',
+    description: '能够使用 Express/Koa 搭建后端服务，了解 RESTful API 设计',
+    icon: 'node',
+    level: 3
+  },
+  {
+    name: 'Git',
+    description: '熟练使用 Git 进行版本控制，了解团队协作流程',
+    icon: 'git',
+    level: 4
+  }
+];
+---
+
+<Layout title="技能展示 - 山禾">
+  <Particles />
+  <Header />
+
+  <main class="py-16">
+    <div class="container-pixel">
+      <!-- 页面标题 -->
+      <div class="text-center mb-16">
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4 animate-fade-in">
+          技能展示
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto animate-fade-in delay-100">
+          持续学习，不断进步。以下是我目前掌握的技术栈...
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-8"></div>
+      </div>
+
+      <!-- 技能网格 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {skills.map((skill, index) => (
+          <div class="pixel-card p-6 card-hover" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- 技能图标 -->
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 bg-[#4CAF50] border-4 border-[#654321] flex items-center justify-center relative">
+                <div class="absolute top-0 left-0 right-0 h-[25%] bg-[#66BB6A]"></div>
+                {skill.icon === 'html' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
+                  </svg>
+                )}
+                {skill.icon === 'js' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067z"/>
+                  </svg>
+                )}
+                {skill.icon === 'react' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.999 0c-2.094 0-3.794 1.7-3.794 3.794 0 2.094 1.7 3.794 3.794 3.794 2.094 0 3.794-1.7 3.794-3.794 0-2.094-1.7-3.794-3.794-3.794z"/>
+                  </svg>
+                )}
+                {skill.icon === 'vue' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 1.61h-9.94L12 5.16 9.94 1.61H0l12 20.78L24 1.61z"/>
+                  </svg>
+                )}
+                {skill.icon === 'node' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.366 0 0 5.367 0 12a11.992 11.992 0 001.314 6.124c.16.005.313.011.46.011.274 0 .543-.027.811-.047"/>
+                  </svg>
+                )}
+                {skill.icon === 'git' && (
+                  <svg class="w-8 h-8 text-white relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.546 10.93L13.067.452c-.6-.6-1.48-.6-2.133 0L8.708 2.627l2.76 2.73c.645-.215 1.379-.07 1.889.441"/>
+                  </svg>
+                )}
+              </div>
+
+              <!-- 熟练度 -->
+              <div class="flex gap-1">
+                {Array(5).fill(0).map((_, i) => (
+                  <div class={`w-3 h-3 border border-[#654321] ${i < skill.level ? 'bg-[#4CAF50]' : 'bg-[#f5f5f5]'} ${i < skill.level ? 'animate-glow' : ''}`}></div>
+                ))}
+              </div>
+            </div>
+
+            <!-- 技能名称 -->
+            <h3 class="pixel-font text-xl text-[#388E3C] mb-2">{skill.name}</h3>
+            <!-- 技能描述 -->
+            <p class="text-[#666666] text-sm">{skill.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- 学习历程 -->
+      <div class="max-w-4xl mx-auto mt-16">
+        <h2 class="pixel-font text-2xl text-center text-[#388E3C] mb-8">学习历程</h2>
+        <div class="space-y-4">
+          <div class="pixel-card p-4 flex items-center gap-4">
+            <div class="w-4 h-4 bg-[#4CAF50] rounded-full animate-pulse"></div>
+            <div class="flex-1">
+              <h4 class="pixel-font text-[#388E3C]">开始学习前端开发</h4>
+              <p class="text-sm text-[#666666]">从 HTML/CSS 入门</p>
+            </div>
+            <span class="text-sm text-[#8B4513] pixel-font">2023</span>
+          </div>
+          <div class="pixel-card p-4 flex items-center gap-4">
+            <div class="w-4 h-4 bg-[#4CAF50] rounded-full"></div>
+            <div class="flex-1">
+              <h4 class="pixel-font text-[#388E3C]">掌握 JavaScript</h4>
+              <p class="text-sm text-[#666666]">深入学习 JS 基础和 ES6+</p>
+            </div>
+            <span class="text-sm text-[#8B4513] pixel-font">2024</span>
+          </div>
+          <div class="pixel-card p-4 flex items-center gap-4">
+            <div class="w-4 h-4 bg-[#8B4513] rounded-full"></div>
+            <div class="flex-1">
+              <h4 class="pixel-font text-[#388E3C]">学习 React/Vue</h4>
+              <p class="text-sm text-[#666666]">掌握主流前端框架</p>
+            </div>
+            <span class="text-sm text-[#8B4513] pixel-font">2024</span>
+          </div>
+          <div class="pixel-card p-4 flex items-center gap-4">
+            <div class="w-4 h-4 bg-[#757575] rounded-full"></div>
+            <div class="flex-1">
+              <h4 class="pixel-font text-[#388E3C]">持续学习中...</h4>
+              <p class="text-sm text-[#666666]">不断提升技能</p>
+            </div>
+            <span class="text-sm text-[#8B4513] pixel-font">现在</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 返回按钮 -->
+      <div class="text-center mt-12">
+        <a href="/" class="btn-mc px-8 py-3 pixel-font text-white text-lg inline-block">
+          ← 返回首页
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
