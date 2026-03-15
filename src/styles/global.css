@@ -447,6 +447,12 @@ body {
   filter: contrast(1.1) brightness(1.05);
 }
 
+/* 玩家头像专用 */
+.pixel-icon-player {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
 /* 章节分隔装饰 */
 .section-divider {
   display: flex;
