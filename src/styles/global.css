@@ -440,6 +440,13 @@ body {
     0 2px 0 var(--color-wood-dark, #4a3728);
 }
 
+/* MC像素图标清晰化 */
+.pixel-icon {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: contrast(1.1) brightness(1.05);
+}
+
 /* 章节分隔装饰 */
 .section-divider {
   display: flex;
