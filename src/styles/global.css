@@ -29,11 +29,37 @@ body {
   font-family: 'Noto Sans SC', sans-serif;
   background-color: var(--color-cream);
   color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 确保小字体也清晰可读 */
+.text-readable {
+  color: #4A2C1A;
+  font-size: 0.8rem;
+}
+
+.text-sub {
+  color: #6B3A2A;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 /* 像素风格标题字体 */
 .pixel-font {
   font-family: 'ZCOOL KuaiLe', cursive;
+  -webkit-font-smoothing: auto;
+  min-font-size: 12px;
+}
+
+/* 像素字体在小尺寸下强制可读 */
+.pixel-font.text-xs,
+.pixel-font.text-\[10px\],
+.pixel-font.text-\[11px\] {
+  font-size: 12px !important;
+  letter-spacing: 0.02em;
 }
 
 .mono-font {
