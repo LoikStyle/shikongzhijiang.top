@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="对接协议 - 山禾">
+  <Header />
+
+  <main class="py-8" transition:animate="fade">
+    <div class="container-pixel max-w-3xl mx-auto">
+
+      <!-- 页面标题 -->
+      <div class="text-center mb-12 animate-fade-in">
+        <div class="inline-block bg-[#FBF2DB] border-2 border-[#A0522D] px-4 py-1 text-xs text-[#8B4513] pixel-font mb-4">
+          INTERFACE · 对接协议
+        </div>
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4" style="text-shadow: 3px 3px 0 #654321;">
+          建立连接
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto leading-relaxed">
+          不只是联系方式，而是合作协议。告诉我你是谁、你想做什么，我会认真回应。
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-6"></div>
+      </div>
+
+      <!-- 告示牌风格统计 -->
+      <div class="pixel-card p-6 bg-[#8D6E63] mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <img src="/images/textures/item/writable_book.png" alt="" class="w-7 h-7 mc-icon" />
+          <span class="pixel-font text-[#FFF3E0] text-lg">// ENDPOINT SPECIFICATION</span>
+        </div>
+        <div class="bg-[#5D4037] border-4 border-[#4E342E] p-4 mb-4">
+          <div class="text-[#FFD54F] pixel-font mb-1">POST /api/connect</div>
+          <div class="text-[#FFCCBC] text-xs pixel-font">Content-Type: application/human</div>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="text-center p-3 bg-[#4CAF50] border-2 border-[#388E3C]" style="box-shadow: 2px 2px 0 #388E3C;">
+            <div class="text-white pixel-font text-xl mb-1">98%</div>
+            <div class="text-white text-xs pixel-font">回复率</div>
+          </div>
+          <div class="text-center p-3 bg-[#FFD54F] border-2 border-[#8B6914]" style="box-shadow: 2px 2px 0 #8B6914;">
+            <div class="text-[#4a3000] pixel-font text-xl mb-1">&lt; 24h</div>
+            <div class="text-[#4a3000] text-xs pixel-font">响应时间</div>
+          </div>
+          <div class="text-center p-3 bg-[#4FC3F7] border-2 border-[#0288D1]" style="box-shadow: 2px 2px 0 #0288D1;">
+            <div class="text-white pixel-font text-xl mb-1">开放</div>
+            <div class="text-white text-xs pixel-font">合作状态</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 接受的连接类型 -->
+      <div class="pixel-card p-6 mb-8">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="/images/textures/item/ender_eye.png" alt="" class="w-7 h-7 mc-icon" />
+          <h2 class="pixel-font text-xl text-[#593925]">接受的连接类型</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[
+            { type: '技术交流', desc: '前端、AI工具、编程心得分享', blockColor: '#4CAF50', icon: '/images/textures/block/bookshelf.png' },
+            { type: '项目合作', desc: '有趣的想法、开源贡献、副项目', blockColor: '#4FC3F7', icon: '/images/textures/block/crafting_table_front.png' },
+            { type: '思想碰撞', desc: '关于AI时代、学习方法、人生哲学', blockColor: '#FFD54F', icon: '/images/textures/item/knowledge_book.png' },
+            { type: '工作机会', desc: '有挑战的前端/全栈开发岗位', blockColor: '#9C27B0', icon: '/images/textures/item/nether_star.png' },
+          ].map(item => (
+            <div class="flex items-start gap-3 p-3 border-2 border-[#E0D5C5] hover:border-[#4CAF50] bg-[#FBF2DB] transition-colors card-hover">
+              <div class="mc-icon-frame w-10 h-10 flex-shrink-0" style={`background: linear-gradient(180deg, ${item.blockColor}cc 0%, ${item.blockColor}88 100%);`}>
+                <img src={item.icon} alt="" class="w-6 h-6 mc-icon relative z-10" />
+              </div>
+              <div>
+                <div class="pixel-font text-sm text-[#593925] mb-1">{item.type}</div>
+                <div class="text-xs text-[#8B4513]">{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 联系表单 -->
+      <div class="pixel-card p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="/images/textures/item/writable_book.png" alt="" class="w-7 h-7 mc-icon" />
+          <h2 class="pixel-font text-xl text-[#593925]">发起连接请求</h2>
+        </div>
+        <form class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs text-[#8B4513] pixel-font mb-2">你是谁 *</label>
+              <input
+                type="text"
+                placeholder="你的名字"
+                class="w-full bg-[#FBF2DB] border-2 border-[#654321] text-[#593925] px-4 py-2.5 text-sm outline-none focus:border-[#4CAF50] transition-colors pixel-font placeholder-[#A0522D]/50"
+              />
+            </div>
+            <div>
+              <label class="block text-xs text-[#8B4513] pixel-font mb-2">联系方式 *</label>
+              <input
+                type="text"
+                placeholder="邮箱 / 微信 / 其他"
+                class="w-full bg-[#FBF2DB] border-2 border-[#654321] text-[#593925] px-4 py-2.5 text-sm outline-none focus:border-[#4CAF50] transition-colors pixel-font placeholder-[#A0522D]/50"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs text-[#8B4513] pixel-font mb-2">连接类型</label>
+            <select class="w-full bg-[#FBF2DB] border-2 border-[#654321] text-[#593925] px-4 py-2.5 text-sm outline-none focus:border-[#4CAF50] transition-colors pixel-font">
+              <option value="">选择连接类型</option>
+              <option>技术交流</option>
+              <option>项目合作</option>
+              <option>思想碰撞</option>
+              <option>工作机会</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-[#8B4513] pixel-font mb-2">你想说什么 *</label>
+            <textarea
+              rows="4"
+              placeholder="越具体越好，比如你是谁、想做什么、为什么找我..."
+              class="w-full bg-[#FBF2DB] border-2 border-[#654321] text-[#593925] px-4 py-2.5 text-sm outline-none focus:border-[#4CAF50] transition-colors resize-none pixel-font placeholder-[#A0522D]/50"
+            ></textarea>
+          </div>
+          <button type="submit" class="pixel-btn w-full flex items-center justify-center gap-2 px-6 py-3 text-base">
+            <img src="/images/textures/item/ender_eye.png" alt="" class="w-5 h-5 mc-icon" />
+            发送连接请求
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

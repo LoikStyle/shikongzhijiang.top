@@ -2,138 +2,250 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Particles from '../components/Particles.astro';
 
-// 导航区块数据 - 使用MC图标
-const navBlocks = [
-  { href: '/about', icon: '/images/icons/player.png', iconType: 'image', title: '关于我', desc: '个人简介', color: '#8B4513' },
-  { href: '/skills', icon: '/images/icons/sword.png', iconType: 'image', title: '技能展示', desc: '技术栈', color: '#4CAF50' },
-  { href: '/projects', icon: '/images/icons/chest.png', iconType: 'image', title: '项目作品', desc: '项目合集', color: '#5D4037' },
-  { href: '/blog', icon: '/images/icons/book.png', iconType: 'image', title: '日记文章', desc: '学习记录', color: '#1976D2' },
-  { href: '/contact', icon: '/images/icons/paper.png', iconType: 'image', title: '联系我', desc: '联系方式', color: '#E91E63' },
+const sections = [
+  {
+    href: '/about',
+    icon: '/images/textures/item/knowledge_book.png',
+    label: 'MyOperatingSystem',
+    title: '我的操作系统',
+    desc: '思维方式 · 价值观 · 决策框架',
+    blockColor: '#4CAF50',
+    tag: '关于我'
+  },
+  {
+    href: '/projects',
+    icon: '/images/textures/item/diamond_pickaxe.png',
+    label: 'Playground',
+    title: '能力演示场',
+    desc: '可交互的项目与能力展示',
+    blockColor: '#4FC3F7',
+    tag: '作品集'
+  },
+  {
+    href: '/thinking',
+    icon: '/images/textures/item/map.png',
+    label: 'ThinkingFeed',
+    title: '思考流',
+    desc: '思维记录 · 知识图谱 · 洞察',
+    blockColor: '#FFD54F',
+    tag: '博客'
+  },
+  {
+    href: '/proof',
+    icon: '/images/textures/item/nether_star.png',
+    label: 'ProofOfWork',
+    title: '工作证明',
+    desc: '可验证的技能与经历',
+    blockColor: '#9C27B0',
+    tag: '简历/技能'
+  },
+  {
+    href: '/interface',
+    icon: '/images/textures/item/ender_eye.png',
+    label: 'Interface',
+    title: '对接协议',
+    desc: '连接方式 · 合作接口',
+    blockColor: '#E91E63',
+    tag: '联系我'
+  },
+  {
+    href: '/live',
+    icon: '/images/textures/item/totem_of_undying.png',
+    label: 'LiveAgent',
+    title: 'AI 分身',
+    desc: '在线的AI版山禾 · 随时对话',
+    blockColor: '#4CAF50',
+    tag: '🆕 新功能',
+    isNew: true
+  },
 ];
 ---
 
-<Layout title="山禾 - 首页">
-  <Particles />
+<Layout title="山禾 - 个人操作系统">
   <Header />
 
   <main class="py-8" transition:animate="fade">
     <div class="container-pixel">
+
       <!-- 欢迎横幅 -->
-      <div class="pixel-card p-6 mb-8 bg-gradient-to-r from-[#FBF2DB] to-[#F5E6C8]">
+      <div class="pixel-card p-6 mb-8 bg-gradient-to-r from-[#FBF2DB] to-[#F5E6C8] animate-fade-in">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <!-- 左侧：玩家信息 -->
           <div class="flex items-center gap-4">
-            <div class="w-24 h-24 bg-[#4CAF50] border-4 border-[#654321] p-1">
-              <div class="w-full h-full bg-[#8B4513] flex items-center justify-center">
-                <img src="/images/icons/player.png" alt="玩家" class="w-20 h-20 object-contain pixel-icon" />
+            <div class="w-24 h-24 bg-[#4CAF50] border-4 border-[#654321] relative overflow-hidden flex-shrink-0" style="box-shadow: 4px 4px 0 #8B4513;">
+              <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
+              <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <img src="/images/icons/player.png" alt="山禾" class="w-16 h-16 object-contain mc-icon relative z-10" />
               </div>
             </div>
             <div>
               <h1 class="pixel-font text-3xl text-[#593925]">山禾</h1>
-              <p class="text-[#8B4513] text-sm">Lv.3 初级开发者</p>
+              <p class="text-[#8B4513] text-sm pixel-font">构建 AI/Agent 时代的个人操作系统</p>
+              <div class="flex gap-2 mt-2">
+                <span class="mc-tag mc-tag-green">前端开发</span>
+                <span class="mc-tag mc-tag-blue">AI 探索</span>
+              </div>
             </div>
           </div>
           <!-- 右侧：服务器状态 -->
-          <div class="flex items-center gap-4 text-center">
-            <div class="bg-[#593925] px-4 py-2">
-              <p class="text-[#FFD700] pixel-font text-sm">在线</p>
-              <p class="text-white text-xs">状态良好</p>
+          <div class="flex items-center gap-3">
+            <div class="bg-[#593925] px-4 py-2 border-2 border-[#654321]" style="box-shadow: 2px 2px 0 #8B4513;">
+              <p class="text-[#FFD700] pixel-font text-sm flex items-center gap-1">
+                <span class="w-2 h-2 bg-[#4CAF50] rounded-full animate-pulse inline-block"></span>
+                在线
+              </p>
+              <p class="text-white text-xs pixel-font">开放合作</p>
+            </div>
+            <div class="bg-[#4CAF50] px-4 py-2 border-2 border-[#654321]" style="box-shadow: 2px 2px 0 #8B4513;">
+              <p class="text-white pixel-font text-sm">Lv.3</p>
+              <p class="text-white text-xs">成长中</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 主导航区块 -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-        {navBlocks.map((block, index) => (
-          <a
-            href={block.href}
-            class="pixel-card p-4 text-center card-hover group animate-fade-in"
-            style={`animation-delay: ${index * 0.1}s`}
-          >
-            <!-- MC图标方块 -->
-            <div
-              class="w-20 h-20 mx-auto mb-3 border-4 border-[#654321] flex items-center justify-center transition-transform group-hover:scale-110 relative"
-              style={`background: linear-gradient(180deg, ${block.color} 0%, ${block.color}dd 100%);`}
-            >
-              <img
-                src={block.icon}
-                alt={block.title}
-                class="w-16 h-16 object-contain pixel-icon"
-              />
-            </div>
-            <!-- 标题 -->
-            <h3 class="pixel-font text-lg text-[#593925] mb-1">{block.title}</h3>
-            <!-- 描述 -->
-            <p class="text-xs text-[#8B4513]">{block.desc}</p>
-          </a>
-        ))}
+      <!-- 范式对比 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="pixel-card p-5 bg-[#F5E6C8] opacity-75">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-4 h-4 bg-[#A0522D] border border-[#654321]"></div>
+            <span class="pixel-font text-[#8B4513] text-sm">传统个人网站</span>
+          </div>
+          <div class="space-y-1.5 text-sm text-[#A0522D] pixel-font">
+            <div>📋 AboutMe（关于我）</div>
+            <div>💼 Portfolio（作品集）</div>
+            <div>📝 Blog（博客）</div>
+            <div>📬 Contact（联系我）</div>
+          </div>
+        </div>
+        <div class="pixel-card p-5 bg-[#E8F5E9]">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-4 h-4 bg-[#4CAF50] border border-[#654321]"></div>
+            <span class="pixel-font text-[#388E3C] text-sm">AI/Agent 时代</span>
+          </div>
+          <div class="space-y-1.5 text-sm pixel-font">
+            <div class="text-[#388E3C]">🧠 MyOperatingSystem</div>
+            <div class="text-[#0288D1]">⚡ Playground</div>
+            <div class="text-[#F9A825]">💭 ThinkingFeed</div>
+            <div class="text-[#E91E63]">🔌 Interface</div>
+          </div>
+        </div>
       </div>
 
-      <!-- 下方两个区块 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 六大模块 -->
+      <div class="mb-8">
+        <div class="flex items-center gap-2 mb-6">
+          <h2 class="pixel-font text-2xl text-[#388E3C]" style="text-shadow: 2px 2px 0 #654321;">探索地图</h2>
+          <div class="flex-1 pixel-line"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {sections.map((section, index) => (
+            <a
+              href={section.href}
+              class="pixel-card p-5 text-center card-hover group animate-fade-in relative"
+              style={`animation-delay: ${index * 0.08}s; background: white;`}
+            >
+              {section.isNew && (
+                <div class="absolute top-2 right-2 px-1.5 py-0.5 bg-[#4CAF50] text-white text-[10px] pixel-font border border-[#388E3C]">
+                  NEW
+                </div>
+              )}
+
+              <!-- MC方块图标 -->
+              <div
+                class="w-16 h-16 mx-auto mb-3 border-4 border-[#654321] flex items-center justify-center relative overflow-hidden transition-transform group-hover:scale-105"
+                style={`background: linear-gradient(180deg, ${section.blockColor}cc 0%, ${section.blockColor}88 100%); box-shadow: inset 0 4px 0 rgba(255,255,255,0.2), inset 0 -4px 0 rgba(0,0,0,0.15), 2px 2px 0 #654321;`}
+              >
+                <img src={section.icon} alt={section.title} class="w-10 h-10 object-contain mc-icon relative z-10" />
+              </div>
+
+              <!-- 英文标签 -->
+              <div class="text-[10px] text-[#A0522D] mb-1 pixel-font">{section.label}</div>
+
+              <!-- 中文标题 -->
+              <h3 class="pixel-font text-base text-[#593925] mb-1 group-hover:text-[#388E3C] transition-colors">{section.title}</h3>
+
+              <!-- 描述 -->
+              <p class="text-xs text-[#8B4513]">{section.desc}</p>
+
+              <!-- 传统分类标签 -->
+              <div class="mt-3">
+                <span class="text-[10px] text-[#A0522D] bg-[#F5E6C8] px-2 py-0.5 border border-[#D7CCC8] pixel-font">{section.tag}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- 公告牌 + 快讯 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <!-- 公告牌 -->
-        <div class="pixel-card p-6 bg-[#A1887F]">
+        <div class="pixel-card p-6 bg-[#A1887F] md:col-span-1">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">📜</span>
+            <img src="/images/textures/item/writable_book.png" alt="" class="w-8 h-8 mc-icon" />
             <h2 class="pixel-font text-xl text-[#593925]">公告牌</h2>
           </div>
           <div class="bg-[#8D6E63] border-4 border-[#5D4037] p-4">
-            <p class="text-[#FFF3E0] pixel-font text-center text-lg">
-              "欢迎来到山禾的世界！<br/>这里记录了我的学习与成长历程"
+            <p class="text-[#FFF3E0] pixel-font text-center text-sm leading-relaxed">
+              "构建 AI/Agent 时代的个人操作系统，记录思维与创造的轨迹"
             </p>
           </div>
-          <div class="flex justify-center mt-4">
+          <div class="flex justify-center mt-3">
             <div class="flex gap-1">
-              <div class="w-3 h-4 bg-[#593925]"></div>
-              <div class="w-3 h-4 bg-[#593925]"></div>
+              <div class="w-3 h-5 bg-[#593925]"></div>
+              <div class="w-3 h-5 bg-[#593925]"></div>
             </div>
           </div>
         </div>
 
-        <!-- 快速链接 -->
-        <div class="pixel-card p-6 bg-[#BCAAA4]">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-2xl">🔗</span>
-            <h2 class="pixel-font text-xl text-[#593925]">快速链接</h2>
+        <!-- 快讯卡片 -->
+        <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="pixel-card p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <img src="/images/textures/item/book.png" alt="" class="w-6 h-6 mc-icon" />
+              <span class="pixel-font text-[#593925] text-sm">最新思考</span>
+            </div>
+            <p class="text-xs text-[#8B4513] leading-relaxed mb-3">持续输出对 AI 时代人机协作的观察...</p>
+            <a href="/thinking" class="text-xs text-[#388E3C] hover:text-[#4CAF50] pixel-font flex items-center gap-1">查看思考流 →</a>
           </div>
-          <div class="space-y-3">
-            <a href="https://github.com" target="_blank" class="flex items-center gap-3 p-3 bg-[#593925]/10 hover:bg-[#593925]/20 rounded transition-colors">
-              <img src="/images/icons/diamond.png" alt="GitHub" class="w-8 h-8 object-contain pixel-icon" />
-              <span class="pixel-font text-[#593925]">GitHub</span>
-              <span class="ml-auto text-[#593925]">→</span>
-            </a>
-            <a href="https://juejin.cn" target="_blank" class="flex items-center gap-3 p-3 bg-[#593925]/10 hover:bg-[#593925]/20 rounded transition-colors">
-              <img src="/images/icons/book.png" alt="掘金" class="w-8 h-8 object-contain pixel-icon" />
-              <span class="pixel-font text-[#593925]">掘金</span>
-              <span class="ml-auto text-[#593925]">→</span>
-            </a>
-            <a href="/contact" class="flex items-center gap-3 p-3 bg-[#593925]/10 hover:bg-[#593925]/20 rounded transition-colors">
-              <img src="/images/icons/paper.png" alt="留言板" class="w-8 h-8 object-contain pixel-icon" />
-              <span class="pixel-font text-[#593925]">留言板</span>
-              <span class="ml-auto text-[#593925]">→</span>
-            </a>
+          <div class="pixel-card p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <img src="/images/textures/item/nether_star.png" alt="" class="w-6 h-6 mc-icon" />
+              <span class="pixel-font text-[#593925] text-sm">当前专注</span>
+            </div>
+            <p class="text-xs text-[#8B4513] leading-relaxed mb-3">探索 AI Agent 工程实践与知识管理...</p>
+            <a href="/proof" class="text-xs text-[#F9A825] hover:text-[#F57F17] pixel-font flex items-center gap-1">工作证明 →</a>
+          </div>
+          <div class="pixel-card p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <img src="/images/textures/item/compass_00.png" alt="" class="w-6 h-6 mc-icon" />
+              <span class="pixel-font text-[#593925] text-sm">开放合作</span>
+            </div>
+            <p class="text-xs text-[#8B4513] leading-relaxed mb-3">对有趣项目、思想交流保持开放...</p>
+            <a href="/interface" class="text-xs text-[#E91E63] hover:text-[#C2185B] pixel-font flex items-center gap-1">发起连接 →</a>
           </div>
         </div>
       </div>
 
-      <!-- 底部统计 -->
-      <div class="mt-8 flex flex-wrap justify-center gap-6">
-        <div class="flex items-center gap-2 bg-[#593925] px-4 py-2">
-          <span class="text-[#FFD700]">📅</span>
-          <span class="text-white pixel-font text-sm">2024年入驻</span>
-        </div>
-        <div class="flex items-center gap-2 bg-[#4CAF50] px-4 py-2">
-          <span class="text-white">⚡</span>
+      <!-- 底部状态栏 -->
+      <div class="flex flex-wrap justify-center gap-4 py-4">
+        <div class="flex items-center gap-2 bg-[#593925] px-4 py-2 border-2 border-[#654321]" style="box-shadow: 2px 2px 0 #8B4513;">
+          <img src="/images/textures/item/experience_bottle.png" alt="" class="w-5 h-5 mc-icon" />
           <span class="text-white pixel-font text-sm">持续学习中</span>
         </div>
-        <div class="flex items-center gap-2 bg-[#E91E63] px-4 py-2">
+        <div class="flex items-center gap-2 bg-[#4CAF50] px-4 py-2 border-2 border-[#388E3C]" style="box-shadow: 2px 2px 0 #388E3C;">
+          <span class="text-white">⚡</span>
+          <span class="text-white pixel-font text-sm">2024年入驻</span>
+        </div>
+        <div class="flex items-center gap-2 bg-[#E91E63] px-4 py-2 border-2 border-[#C2185B]" style="box-shadow: 2px 2px 0 #C2185B;">
           <span class="text-white">❤️</span>
           <span class="text-white pixel-font text-sm">感谢访问</span>
         </div>
       </div>
+
     </div>
   </main>
 

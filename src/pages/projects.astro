@@ -2,109 +2,185 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Particles from '../components/Particles.astro';
 
-interface Project {
-  title: string;
-  description: string;
-  tech: string[];
-  status: 'completed' | 'working' | 'planned';
-}
-
-const projects: Project[] = [
+const projects = [
   {
-    title: '个人网站',
-    description: '一个像素风格的个人展示网站，使用 Astro 构建。',
-    tech: ['Astro', 'Tailwind', 'TypeScript'],
-    status: 'working'
+    title: 'MC主题个人OS',
+    desc: '基于 Astro 构建的 AI/Agent 时代个人操作系统，MC像素风格设计',
+    tags: ['Astro', 'TailwindCSS', '个人项目'],
+    status: '进行中',
+    statusColor: '#4CAF50',
+    icon: '/images/textures/block/crafting_table_front.png',
+    blockColor: '#4FC3F7',
+    links: { demo: '/', github: 'https://github.com' }
   },
   {
-    title: '待添加项目1',
-    description: '更多项目正在准备中...',
-    tech: ['React', 'Node.js'],
-    status: 'planned'
+    title: 'AI Agent 工具链探索',
+    desc: '探索 Claude、GPT 等 AI 工具的工程化集成，构建个人 AI 工作流',
+    tags: ['AI', 'Python', 'Claude API'],
+    status: '实验中',
+    statusColor: '#F9A825',
+    icon: '/images/textures/item/nether_star.png',
+    blockColor: '#9C27B0',
+    links: { github: 'https://github.com' }
   },
   {
-    title: '待添加项目2',
-    description: '更多项目正在准备中...',
-    tech: ['Vue', 'Express'],
-    status: 'planned'
-  }
+    title: '知识图谱可视化',
+    desc: '将个人知识库转化为可交互的知识图谱，辅助思维整理',
+    tags: ['React', 'D3.js', '知识管理'],
+    status: '规划中',
+    statusColor: '#757575',
+    icon: '/images/textures/item/map.png',
+    blockColor: '#FFD54F',
+    links: {}
+  },
+  {
+    title: '像素艺术生成器',
+    desc: '将普通图片转换为 MC 风格像素画的在线工具',
+    tags: ['Canvas API', 'JavaScript', '创意工具'],
+    status: '规划中',
+    statusColor: '#757575',
+    icon: '/images/textures/block/amethyst_block.png',
+    blockColor: '#9C27B0',
+    links: {}
+  },
+];
+
+const demoSkills = [
+  {
+    title: 'CSS 动画演示',
+    desc: '用 CSS 实现的各种动效展示',
+    icon: '/images/textures/block/redstone_lamp_on.png',
+    blockColor: '#E74C3C'
+  },
+  {
+    title: 'TypeScript 类型体操',
+    desc: '复杂类型推导与工具类型实现',
+    icon: '/images/textures/block/diamond_block.png',
+    blockColor: '#4FC3F7'
+  },
+  {
+    title: 'React Hooks 模式',
+    desc: '自定义 Hook 设计与最佳实践',
+    icon: '/images/textures/block/prismarine.png',
+    blockColor: '#4CAF50'
+  },
 ];
 ---
 
-<Layout title="项目作品 - 山禾">
-  <Particles />
+<Layout title="能力演示场 - 山禾" description="山禾的项目与能力展示">
   <Header />
 
-  <main class="py-16" transition:animate="fade">
+  <main class="py-8" transition:animate="fade">
     <div class="container-pixel">
+
       <!-- 页面标题 -->
-      <div class="text-center mb-16">
-        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4 animate-fade-in">
-          项目作品
+      <div class="text-center mb-12 animate-fade-in">
+        <div class="inline-block bg-[#FBF2DB] border-2 border-[#A0522D] px-4 py-1 text-xs text-[#8B4513] pixel-font mb-4">
+          PLAYGROUND · 能力演示场
+        </div>
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4" style="text-shadow: 3px 3px 0 #654321;">
+          能力演示场
         </h1>
-        <p class="text-[#666666] max-w-xl mx-auto animate-fade-in delay-100">
-          记录我做过的一些项目...
+        <p class="text-[#666666] max-w-xl mx-auto leading-relaxed">
+          不只是项目列表，而是可交互的能力展示。每个项目都是真实问题的解决方案。
         </p>
-        <div class="pixel-line max-w-md mx-auto mt-8"></div>
+        <div class="pixel-line max-w-md mx-auto mt-6"></div>
       </div>
 
       <!-- 项目网格 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {projects.map((project, index) => (
-          <div class="pixel-card overflow-hidden card-hover" style={`animation-delay: ${index * 0.1}s`}>
-            <!-- 项目卡片头部 -->
-            <div class="h-32 bg-[#4CAF50] border-b-4 border-[#654321] relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-20 h-20 bg-[#8B4513] border-4 border-[#654321] flex items-center justify-center">
-                  <span class="text-4xl">📦</span>
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/textures/item/diamond_pickaxe.png" alt="" class="w-8 h-8 mc-icon" />
+          <h2 class="pixel-font text-2xl text-[#388E3C]" style="text-shadow: 2px 2px 0 #654321;">项目展示</h2>
+          <div class="flex-1 pixel-line"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {projects.map((project, i) => (
+            <div class="pixel-card p-6 animate-fade-in card-hover group" style={`animation-delay: ${i * 0.1}s;`}>
+              <!-- 项目头部 -->
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="mc-icon-frame flex-shrink-0"
+                  style={`background: linear-gradient(180deg, ${project.blockColor}cc 0%, ${project.blockColor}88 100%);`}
+                >
+                  <img src={project.icon} alt="" class="w-7 h-7 mc-icon relative z-10" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h3 class="pixel-font text-base text-[#593925] mb-1 group-hover:text-[#388E3C] transition-colors">{project.title}</h3>
+                  <div class="flex items-center gap-1.5">
+                    <div class="w-2 h-2 rounded-full" style={`background: ${project.statusColor};`}></div>
+                    <span class="text-xs pixel-font" style={`color: ${project.statusColor};`}>{project.status}</span>
+                  </div>
                 </div>
               </div>
-              <!-- 状态标签 -->
-              <div class="absolute top-2 right-2">
-                {project.status === 'completed' && (
-                  <span class="px-2 py-1 bg-[#4CAF50] text-white text-xs pixel-font">已完成</span>
-                )}
-                {project.status === 'working' && (
-                  <span class="px-2 py-1 bg-[#FFD54F] text-[#654321] text-xs pixel-font">进行中</span>
-                )}
-                {project.status === 'planned' && (
-                  <span class="px-2 py-1 bg-[#757575] text-white text-xs pixel-font">计划中</span>
-                )}
-              </div>
-            </div>
 
-            <!-- 项目内容 -->
-            <div class="p-6">
-              <h3 class="pixel-font text-xl text-[#388E3C] mb-2">{project.title}</h3>
-              <p class="text-[#666666] text-sm mb-4">{project.description}</p>
+              <p class="text-sm text-[#8B4513] leading-relaxed mb-4">{project.desc}</p>
 
-              <!-- 技术栈 -->
-              <div class="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span class="px-2 py-1 bg-[#4CAF50]/10 border border-[#4CAF50]/30 text-[#388E3C] text-xs">
-                    {t}
-                  </span>
+              <!-- 标签 -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.tags.map(tag => (
+                  <span class="mc-tag mc-tag-blue text-xs">{tag}</span>
                 ))}
               </div>
+
+              <!-- 链接 -->
+              <div class="flex gap-3">
+                {project.links.demo && (
+                  <a href={project.links.demo} class="text-xs text-[#388E3C] hover:text-[#4CAF50] transition-colors flex items-center gap-1 pixel-font">
+                    <span>预览</span>
+                    <span>→</span>
+                  </a>
+                )}
+                {project.links.github && (
+                  <a href={project.links.github} target="_blank" class="text-xs text-[#8B4513] hover:text-[#388E3C] transition-colors flex items-center gap-1 pixel-font">
+                    <span>GitHub</span>
+                    <span>↗</span>
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
 
-      <!-- 更多项目提示 -->
-      <div class="text-center mt-12 pixel-card p-8 max-w-2xl mx-auto">
-        <p class="text-[#666666] mb-4">更多项目正在准备中...</p>
-        <p class="text-sm text-[#888888]">欢迎关注我的 GitHub 了解最新动态</p>
-      </div>
+      <!-- 技能演示 -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/textures/item/experience_bottle.png" alt="" class="w-8 h-8 mc-icon" />
+          <h2 class="pixel-font text-2xl text-[#388E3C]" style="text-shadow: 2px 2px 0 #654321;">技能演示</h2>
+          <div class="flex-1 pixel-line"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {demoSkills.map((demo, i) => (
+            <div class="pixel-card p-5 text-center cursor-pointer group card-hover animate-fade-in" style={`animation-delay: ${i * 0.1}s;`}>
+              <div
+                class="mc-icon-frame w-14 h-14 mx-auto mb-3"
+                style={`background: linear-gradient(180deg, ${demo.blockColor}cc 0%, ${demo.blockColor}88 100%);`}
+              >
+                <img src={demo.icon} alt="" class="w-8 h-8 mc-icon relative z-10 group-hover:animate-float" />
+              </div>
+              <h3 class="pixel-font text-sm text-[#593925] mb-2 group-hover:text-[#388E3C] transition-colors">{demo.title}</h3>
+              <p class="text-xs text-[#8B4513]">{demo.desc}</p>
+              <div class="mt-3 text-xs text-[#A0522D] pixel-font border border-[#D7CCC8] bg-[#F5E6C8] px-2 py-1 inline-block">即将上线</div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <!-- 返回按钮 -->
-      <div class="text-center mt-12">
-        <a href="/" class="btn-mc px-8 py-3 pixel-font text-white text-lg inline-block">
-          ← 返回首页
+      <!-- 开放合作 CTA -->
+      <div class="pixel-card p-8 text-center bg-[#FBF2DB]">
+        <img src="/images/textures/item/diamond.png" alt="" class="w-12 h-12 mc-icon mx-auto mb-4 animate-float" />
+        <h3 class="pixel-font text-2xl text-[#593925] mb-3" style="text-shadow: 1px 1px 0 #654321;">有想法？一起构建</h3>
+        <p class="text-[#8B4513] text-sm mb-6 max-w-md mx-auto">
+          对有趣的项目、开源合作、或者技术难题探讨，我都保持开放。
+        </p>
+        <a href="/interface" class="mc-btn inline-flex items-center gap-2">
+          <img src="/images/textures/item/ender_eye.png" alt="" class="w-5 h-5 mc-icon" />
+          发起合作
         </a>
       </div>
+
     </div>
   </main>
 

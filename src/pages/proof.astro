@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const skills = [
+  { name: 'HTML/CSS', level: 85, color: '#E34F26', tag: '熟练', icon: '/images/textures/block/crafting_table_front.png' },
+  { name: 'JavaScript', level: 75, color: '#F9A825', tag: '掌握', icon: '/images/textures/item/experience_bottle.png' },
+  { name: 'React', level: 70, color: '#4FC3F7', tag: '掌握', icon: '/images/textures/block/diamond_block.png' },
+  { name: 'Vue 3', level: 65, color: '#4CAF50', tag: '了解', icon: '/images/textures/block/grass_block_top.png' },
+  { name: 'TypeScript', level: 60, color: '#0288D1', tag: '学习中', icon: '/images/textures/block/prismarine.png' },
+  { name: 'Node.js', level: 60, color: '#388E3C', tag: '了解', icon: '/images/textures/block/oak_log.png' },
+  { name: 'Astro', level: 70, color: '#FF5D01', tag: '掌握', icon: '/images/textures/block/netherite_block.png' },
+  { name: 'AI Tools', level: 80, color: '#9C27B0', tag: '深度使用', icon: '/images/textures/item/nether_star.png' },
+  { name: 'Git', level: 75, color: '#8B4513', tag: '熟练', icon: '/images/textures/block/obsidian.png' },
+];
+
+const achievements = [
+  { icon: '/images/textures/item/diamond.png', title: '个人网站', desc: '从零构建 MC 主题个人网站', blockColor: '#4FC3F7' },
+  { icon: '/images/textures/item/golden_apple.png', title: 'AI 工具达人', desc: '深度使用并探索多种 AI 工具', blockColor: '#FFD54F' },
+  { icon: '/images/textures/item/nether_star.png', title: '独立学习者', desc: '自驱力学习前端开发全栈', blockColor: '#9C27B0' },
+];
+---
+
+<Layout title="工作证明 - 山禾">
+  <Header />
+
+  <main class="py-8" transition:animate="fade">
+    <div class="container-pixel">
+
+      <!-- 页面标题 -->
+      <div class="text-center mb-12 animate-fade-in">
+        <div class="inline-block bg-[#FBF2DB] border-2 border-[#A0522D] px-4 py-1 text-xs text-[#8B4513] pixel-font mb-4">
+          PROOF OF WORK · 工作证明
+        </div>
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4" style="text-shadow: 3px 3px 0 #654321;">
+          技能与证明
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto leading-relaxed">
+          不只是技能列表，而是可验证的能力证明。每项技能背后都有实际项目支撑。
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-6"></div>
+      </div>
+
+      <!-- 技能栈 -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/textures/item/diamond_sword.png" alt="" class="w-8 h-8 mc-icon" />
+          <h2 class="pixel-font text-2xl text-[#388E3C]" style="text-shadow: 2px 2px 0 #654321;">技能栈</h2>
+          <div class="flex-1 pixel-line"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {skills.map((skill, i) => (
+            <div class="pixel-card p-5 card-hover animate-fade-in" style={`animation-delay: ${i * 0.05}s;`}>
+              <div class="flex items-center gap-3">
+                <div class="mc-icon-frame w-12 h-12 flex-shrink-0" style={`background: linear-gradient(180deg, ${skill.color}cc 0%, ${skill.color}88 100%);`}>
+                  <img src={skill.icon} alt="" class="w-7 h-7 mc-icon relative z-10" />
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="pixel-font text-[#593925]">{skill.name}</span>
+                    <span class="text-xs pixel-font px-2 py-0.5 border" style={`color: ${skill.color}; background: ${skill.color}15; border-color: ${skill.color}40;`}>{skill.tag}</span>
+                  </div>
+                  <div class="mc-progress">
+                    <div class="mc-progress-bar" style={`width: ${skill.level}%; background: linear-gradient(90deg, ${skill.color} 0%, ${skill.color}99 100%);`}></div>
+                  </div>
+                  <div class="text-right text-xs text-[#A0522D] mt-1 pixel-font">{skill.level}%</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 成就系统 -->
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/images/textures/item/nether_star.png" alt="" class="w-8 h-8 mc-icon animate-glow" />
+          <h2 class="pixel-font text-2xl text-[#388E3C]" style="text-shadow: 2px 2px 0 #654321;">成就解锁</h2>
+          <div class="flex-1 pixel-line"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {achievements.map((a, i) => (
+            <div class="pixel-card p-6 text-center card-hover animate-fade-in" style={`animation-delay: ${i * 0.1}s; background: #FBF2DB;`}>
+              <div class="w-20 h-20 mx-auto mb-4">
+                <div class="mc-icon-frame w-full h-full mx-auto" style={`background: linear-gradient(180deg, ${a.blockColor}cc 0%, ${a.blockColor}88 100%);`}>
+                  <img src={a.icon} alt="" class="w-11 h-11 mc-icon relative z-10 animate-float" style={`animation-delay: ${i * 0.4}s;`} />
+                </div>
+              </div>
+              <h3 class="pixel-font text-lg text-[#593925] mb-2">{a.title}</h3>
+              <p class="text-sm text-[#8B4513]">{a.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

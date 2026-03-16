@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const thoughts = [
+  {
+    date: '2026-03-15',
+    title: 'AI时代的个人操作系统',
+    content: '个人网站不应该只是一张名片，而应该是思维的外显。当AI可以帮你处理信息时，你的价值在于你的判断框架...',
+    tags: ['AI', '系统思维', '个人品牌'],
+    blockColor: '#4FC3F7'
+  },
+  {
+    date: '2026-03-10',
+    title: '学习的本质：构建认知杠杆',
+    content: '真正的学习不是记忆信息，而是构建可以产生新认知的思维工具。每个真正理解的概念都是认知杠杆...',
+    tags: ['学习', '认知', '成长'],
+    blockColor: '#FFD54F'
+  },
+  {
+    date: '2026-03-05',
+    title: 'Agent工程的核心问题',
+    content: '构建AI Agent最核心的问题不是模型能力，而是上下文管理。如何让Agent在长期交互中保持连贯性...',
+    tags: ['AI Agent', '工程', '技术'],
+    blockColor: '#4CAF50'
+  },
+  {
+    date: '2026-02-28',
+    title: '像素化的审美哲学',
+    content: 'MC的美在于用有限的像素表达无限的世界。这种受限的创作反而激发了最大的创造力。约束即自由...',
+    tags: ['设计', '哲学', 'MC'],
+    blockColor: '#9C27B0'
+  },
+];
+
+const knowledgeNodes = [
+  { label: 'AI/Agent', x: 50, y: 18, color: '#4FC3F7', size: 14 },
+  { label: '系统思维', x: 22, y: 42, color: '#4CAF50', size: 12 },
+  { label: '前端工程', x: 76, y: 38, color: '#F9A825', size: 12 },
+  { label: '学习方法', x: 36, y: 68, color: '#9C27B0', size: 10 },
+  { label: '个人品牌', x: 64, y: 66, color: '#E91E63', size: 10 },
+  { label: 'MC世界', x: 16, y: 74, color: '#66BB6A', size: 10 },
+];
+---
+
+<Layout title="思考流 - 山禾">
+  <Header />
+
+  <main class="py-8" transition:animate="fade">
+    <div class="container-pixel">
+
+      <!-- 页面标题 -->
+      <div class="text-center mb-12 animate-fade-in">
+        <div class="inline-block bg-[#FBF2DB] border-2 border-[#A0522D] px-4 py-1 text-xs text-[#8B4513] pixel-font mb-4">
+          THINKING FEED · 思考流
+        </div>
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4" style="text-shadow: 3px 3px 0 #654321;">
+          思考流
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto leading-relaxed">
+          不只是博客，而是实时的思维流动。记录洞察、问题、和正在形成的观点。
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 左列：知识图谱 -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/textures/item/map.png" alt="" class="w-7 h-7 mc-icon" />
+            <h2 class="pixel-font text-xl text-[#388E3C]" style="text-shadow: 1px 1px 0 #654321;">知识图谱</h2>
+          </div>
+          <div class="pixel-card bg-[#A1887F] relative" style="height: 240px; overflow: hidden;">
+            <!-- SVG连接线 -->
+            <svg class="w-full h-full absolute inset-0" viewBox="0 0 100 100" preserveAspectRatio="none" style="opacity: 0.5;">
+              <line x1="50" y1="18" x2="22" y2="42" stroke="#4CAF50" stroke-width="0.5" />
+              <line x1="50" y1="18" x2="76" y2="38" stroke="#4CAF50" stroke-width="0.5" />
+              <line x1="50" y1="18" x2="36" y2="68" stroke="#4CAF50" stroke-width="0.3" />
+              <line x1="22" y1="42" x2="36" y2="68" stroke="#66BB6A" stroke-width="0.3" />
+              <line x1="76" y1="38" x2="64" y2="66" stroke="#F9A825" stroke-width="0.3" />
+              <line x1="22" y1="42" x2="16" y2="74" stroke="#66BB6A" stroke-width="0.3" />
+            </svg>
+            <!-- 节点 -->
+            {knowledgeNodes.map(node => (
+              <div
+                class="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                style={`left: ${node.x}%; top: ${node.y}%;`}
+              >
+                <div
+                  class="px-2 py-1 text-white border-2 pixel-font text-xs transition-transform group-hover:scale-110"
+                  style={`background: ${node.color}; border-color: ${node.color}bb; font-size: ${node.size === 14 ? '0.85rem' : '0.7rem'};`}
+                >
+                  {node.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- 标签云 -->
+          <div class="mt-4 pixel-card p-4">
+            <div class="pixel-font text-[#593925] text-sm mb-3">🏷️ 常用标签</div>
+            <div class="flex flex-wrap gap-2">
+              {['AI', 'Agent', '系统思维', '前端', '学习方法', 'MC', '设计', '认知'].map(tag => (
+                <span class="mc-tag mc-tag-green cursor-pointer hover:bg-[#4CAF50]/20 transition-colors">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 右列：思考流列表 -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/textures/item/book.png" alt="" class="w-7 h-7 mc-icon" />
+            <h2 class="pixel-font text-xl text-[#388E3C]" style="text-shadow: 1px 1px 0 #654321;">最新思考</h2>
+          </div>
+          <div class="space-y-4">
+            {thoughts.map((thought, i) => (
+              <article class="pixel-card p-5 card-hover animate-fade-in" style={`animation-delay: ${i * 0.1}s;`}>
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="w-1.5 flex-shrink-0 self-stretch rounded-full" style={`background: ${thought.blockColor};`}></div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-xs text-[#A0522D] pixel-font">{thought.date}</span>
+                    </div>
+                    <h3 class="pixel-font text-lg text-[#593925] mb-2 hover:text-[#388E3C] transition-colors cursor-pointer">
+                      {thought.title}
+                    </h3>
+                    <p class="text-sm text-[#8B4513] leading-relaxed mb-3">{thought.content}</p>
+                    <div class="flex flex-wrap gap-2">
+                      {thought.tags.map(tag => (
+                        <span class="mc-tag mc-tag-green text-xs">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="text-center mt-6">
+            <button class="pixel-btn px-6 py-2 flex items-center gap-2 mx-auto">
+              <img src="/images/textures/item/book.png" alt="" class="w-5 h-5 mc-icon" />
+              加载更多思考
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

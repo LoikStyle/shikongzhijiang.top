@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="AI分身 - 山禾">
+  <Header />
+
+  <main class="py-8" transition:animate="fade">
+    <div class="container-pixel max-w-3xl mx-auto">
+
+      <!-- 页面标题 -->
+      <div class="text-center mb-8 animate-fade-in">
+        <div class="inline-flex items-center gap-2 bg-[#FBF2DB] border-2 border-[#A0522D] px-4 py-1 text-xs text-[#8B4513] pixel-font mb-4">
+          <span class="w-2 h-2 bg-[#4CAF50] rounded-full animate-pulse"></span>
+          LIVE AGENT · 在线
+        </div>
+        <h1 class="pixel-font text-4xl md:text-5xl text-[#388E3C] mb-4" style="text-shadow: 3px 3px 0 #654321;">
+          山禾的 AI分身
+        </h1>
+        <p class="text-[#666666] max-w-xl mx-auto leading-relaxed">
+          基于山禾思维框架的AI分身。向它提问关于山禾的一切——技术、观点、合作意向。
+        </p>
+        <div class="pixel-line max-w-md mx-auto mt-6"></div>
+      </div>
+
+      <!-- 聊天窗口（工作台/箱子风格） -->
+      <div class="pixel-card overflow-hidden" style="height: 540px; display: flex; flex-direction: column;">
+
+        <!-- 聊天头部（告示牌风格） -->
+        <div class="flex items-center gap-3 px-5 py-3 bg-[#8D6E63] border-b-4 border-[#5D4037]">
+          <div class="relative w-10 h-10 bg-[#4CAF50] border-2 border-[#654321] overflow-hidden flex-shrink-0">
+            <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
+            <img src="/images/icons/player.png" alt="山禾AI" class="absolute inset-0 w-full h-full object-contain mc-icon p-1 z-10" />
+            <div class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-[#4CAF50] border border-[#388E3C] rounded-full z-20"></div>
+          </div>
+          <div>
+            <div class="pixel-font text-[#FFF3E0] text-lg">山禾 · AI分身</div>
+            <div class="text-xs text-[#FFCCBC] pixel-font flex items-center gap-1">
+              <span class="w-1.5 h-1.5 bg-[#4CAF50] rounded-full animate-pulse"></span>
+              在线 · 随时响应
+            </div>
+          </div>
+          <div class="ml-auto">
+            <div class="px-3 py-1 bg-[#5D4037] border-2 border-[#4E342E] text-[#FFCCBC] text-xs pixel-font">
+              Powered by Claude
+            </div>
+          </div>
+        </div>
+
+        <!-- 消息区域 -->
+        <div class="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FBF2DB]" id="chat-messages">
+          <!-- AI欢迎消息 -->
+          <div class="flex gap-3">
+            <div class="w-9 h-9 bg-[#4CAF50] border-2 border-[#654321] overflow-hidden flex-shrink-0 relative">
+              <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
+              <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
+              <img src="/images/icons/player.png" alt="" class="absolute inset-0 w-full h-full object-contain mc-icon p-0.5 z-10" />
+            </div>
+            <div class="flex-1">
+              <div class="text-xs text-[#A0522D] pixel-font mb-1">山禾AI · 刚刚</div>
+              <div class="bg-white border-2 border-[#654321] px-4 py-3 max-w-md text-sm text-[#593925] leading-relaxed" style="box-shadow: 2px 2px 0 #8B4513;">
+                你好！我是山禾的AI分身 🎮
+                <br/><br/>
+                你可以问我关于山禾的任何事：技术栈、项目、观点、合作方式。
+                <br/><br/>
+                <span class="text-[#A0522D] text-xs pixel-font">注：这是概念演示版，完整版即将上线。</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 快速提问按钮 -->
+          <div class="flex gap-2 flex-wrap pl-12">
+            {[
+              '山禾擅长什么？',
+              '他对AI的看法？',
+              '如何与他合作？',
+              '推荐学习路径？'
+            ].map(q => (
+              <button
+                class="suggest-btn px-3 py-1.5 bg-[#FBF2DB] border-2 border-[#654321] text-[#593925] hover:bg-[#4CAF50] hover:text-white hover:border-[#388E3C] text-xs transition-all pixel-font"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="border-t-4 border-[#654321] p-4 bg-[#FBF2DB]">
+          <div class="flex gap-3">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="向山禾AI提问..."
+              class="flex-1 bg-white border-2 border-[#654321] focus:border-[#4CAF50] text-[#593925] px-4 py-2.5 text-sm outline-none transition-colors pixel-font placeholder-[#A0522D]/50"
+            />
+            <button
+              id="send-btn"
+              class="pixel-btn px-4 py-2.5 flex-shrink-0 flex items-center gap-2"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              发送
+            </button>
+          </div>
+          <div class="text-xs text-[#A0522D] pixel-font mt-2">按 Enter 发送 · 完整AI功能即将上线</div>
+        </div>
+      </div>
+
+      <!-- 说明卡片 -->
+      <div class="pixel-card p-5 mt-6 bg-[#FBF2DB]">
+        <div class="text-xs text-[#8B4513] pixel-font mb-3">// AGENT INFO</div>
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div class="mc-icon-frame w-10 h-10 mx-auto mb-2">
+              <img src="/images/textures/item/book.png" alt="" class="w-6 h-6 mc-icon relative z-10" />
+            </div>
+            <div class="pixel-font text-[#593925] text-sm mb-1">知识库</div>
+            <div class="text-xs text-[#8B4513]">基于山禾的文章与思考流</div>
+          </div>
+          <div>
+            <div class="mc-icon-frame w-10 h-10 mx-auto mb-2">
+              <img src="/images/textures/item/compass_00.png" alt="" class="w-6 h-6 mc-icon relative z-10" />
+            </div>
+            <div class="pixel-font text-[#593925] text-sm mb-1">更新频率</div>
+            <div class="text-xs text-[#8B4513]">每月同步最新思考</div>
+          </div>
+          <div>
+            <div class="mc-icon-frame w-10 h-10 mx-auto mb-2">
+              <img src="/images/textures/item/nether_star.png" alt="" class="w-6 h-6 mc-icon relative z-10" />
+            </div>
+            <div class="pixel-font text-[#593925] text-sm mb-1">能力范围</div>
+            <div class="text-xs text-[#8B4513]">技术咨询、合作对接</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const input = document.getElementById('chat-input') as HTMLInputElement;
+  const sendBtn = document.getElementById('send-btn');
+  const messages = document.getElementById('chat-messages');
+  const suggestBtns = document.querySelectorAll('.suggest-btn');
+
+  const aiResponses: Record<string, string> = {
+    '山禾擅长什么？': '山禾主要专注前端开发，熟悉 React、Vue、Astro 等框架，以及 TypeScript。他对 AI 工具有浓厚兴趣，正在深入探索 AI Agent 工程实践。',
+    '他对AI的看法？': 'AI 不是替代，而是放大器。山禾认为 AI/Agent 时代最重要的能力不是写代码，而是提出好问题、构建清晰的思维框架，以及判断 AI 输出的质量。',
+    '如何与他合作？': '你可以通过"对接协议"页面发起合作请求。山禾对技术交流、有趣的项目合作、以及思想碰撞都保持开放。最好说明你是谁、想做什么。',
+    '推荐学习路径？': '山禾的建议：先深入一个领域到"能解决真实问题"的程度，再广泛探索。学前端的话：HTML/CSS → JavaScript扎实 → React/Vue → TypeScript → 构建真实项目。',
+  };
+
+  function addMessage(content: string, isUser: boolean) {
+    const div = document.createElement('div');
+    div.className = `flex gap-3 ${isUser ? 'justify-end' : ''}`;
+
+    if (isUser) {
+      div.innerHTML = `
+        <div class="bg-[#4CAF50] border-2 border-[#388E3C] px-4 py-3 max-w-md text-sm text-white leading-relaxed pixel-font" style="box-shadow: 2px 2px 0 #388E3C;">
+          ${content}
+        </div>
+      `;
+    } else {
+      div.innerHTML = `
+        <div class="w-9 h-9 bg-[#4CAF50] border-2 border-[#654321] overflow-hidden flex-shrink-0 relative" style="min-width: 36px;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 30%; background: #66BB6A;"></div>
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 70%; background: #8B4513;"></div>
+          <img src="/images/icons/player.png" alt="" class="absolute inset-0 w-full h-full object-contain mc-icon p-0.5 z-10" style="image-rendering: pixelated;" />
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#A0522D] pixel-font mb-1">山禾AI · 刚刚</div>
+          <div class="bg-white border-2 border-[#654321] px-4 py-3 max-w-md text-sm text-[#593925] leading-relaxed" style="box-shadow: 2px 2px 0 #8B4513;">
+            ${content}
+          </div>
+        </div>
+      `;
+    }
+
+    messages?.appendChild(div);
+    messages?.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+  }
+
+  function handleSend() {
+    const text = input?.value.trim();
+    if (!text) return;
+    addMessage(text, true);
+    input.value = '';
+    setTimeout(() => {
+      const response = aiResponses[text] || '这是个好问题！目前我还在学习如何更好地回答这类问题。你可以通过"对接协议"页面直接联系山禾本人获得更准确的回答。';
+      addMessage(response, false);
+    }, 800);
+  }
+
+  sendBtn?.addEventListener('click', handleSend);
+  input?.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSend(); });
+  suggestBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (input) { input.value = btn.textContent || ''; handleSend(); }
+    });
+  });
+</script>
