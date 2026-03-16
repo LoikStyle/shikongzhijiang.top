@@ -26,7 +26,7 @@ const sections = [
     label: 'ThinkingFeed',
     title: '思考流',
     desc: '思维记录 · 知识图谱 · 洞察',
-    blockColor: '#FFD54F',
+    blockColor: '#F9A825',
   },
   {
     href: '/proof',
@@ -51,7 +51,7 @@ const sections = [
     title: 'AI 分身',
     desc: '在线的AI版山禾 · 随时对话',
     blockColor: '#4CAF50',
-    isNew: true
+    isNew: true,
   },
 ];
 ---
@@ -59,104 +59,181 @@ const sections = [
 <Layout title="山禾 - 个人操作系统">
   <Header />
 
-  <main class="py-12" transition:animate="fade">
-    <div class="container-pixel">
+  <main transition:animate="fade">
 
-      <!-- Hero：玩家卡片 + 简介 -->
-      <div class="flex flex-col md:flex-row items-center gap-8 mb-14 animate-fade-in">
-        <!-- 玩家头像 -->
-        <div class="flex-shrink-0">
-          <div class="w-28 h-28 bg-[#4CAF50] border-4 border-[#654321] relative overflow-hidden animate-float"
-               style="box-shadow: 6px 6px 0 #8B4513;">
-            <div class="absolute top-0 left-0 right-0 h-[30%] bg-[#66BB6A]"></div>
-            <div class="absolute bottom-0 left-0 right-0 h-[70%] bg-[#8B4513]"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <img src="/images/icons/player.png" alt="山禾" class="w-20 h-20 object-contain mc-icon relative z-10" />
-            </div>
-          </div>
-        </div>
+    <!-- ===== HERO：占满视口，左文字右角色 ===== -->
+    <section class="min-h-[calc(100vh-5rem)] flex flex-col justify-center relative overflow-hidden">
 
-        <!-- 文字介绍 -->
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="w-2 h-2 bg-[#4CAF50] rounded-full animate-pulse"></span>
-            <span class="text-xs text-[#388E3C] pixel-font">在线 · 开放合作</span>
-          </div>
-          <h1 class="pixel-font text-4xl md:text-5xl text-[#593925] mb-2"
-              style="text-shadow: 3px 3px 0 #A0522D;">山禾</h1>
-          <p class="pixel-font text-lg text-[#388E3C] mb-3">
-            构建 AI/Agent 时代的个人操作系统
-          </p>
-          <p class="text-sm text-[#6B3A2A] leading-relaxed max-w-md mb-5">
-            热爱技术与创造的开发者，探索人类智慧与 AI 协作的边界。
-            相信工具改变思维，思维改变世界。
-          </p>
-          <!-- CTA -->
-          <div class="flex flex-wrap gap-3">
-            <a href="/about" class="pixel-btn px-5 py-2 flex items-center gap-2 text-sm">
-              <img src="/images/textures/item/knowledge_book.png" alt="" class="w-5 h-5 mc-icon" />
-              探索我的OS
-            </a>
-            <a href="/live"
-               class="flex items-center gap-2 px-5 py-2 border-4 border-[#654321] bg-white text-[#593925] pixel-font text-sm transition-all hover:bg-[#E8F5E9] hover:text-[#388E3C]"
-               style="box-shadow: 3px 3px 0 #8B4513;">
-              <span class="w-2 h-2 bg-[#4CAF50] rounded-full animate-pulse"></span>
-              与AI分身对话
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- 背景淡纹理（草方块顶部，极淡） -->
+      <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+           style="background-image: url('/images/textures/block/grass_block_top.png'); background-repeat: repeat; background-size: 48px 48px; image-rendering: pixelated;"></div>
 
-      <!-- 分割线 -->
-      <div class="flex items-center gap-4 mb-10">
-        <div class="flex-1 pixel-line"></div>
-        <span class="pixel-font text-[#8B4513] text-sm px-2">探索地图</span>
-        <div class="flex-1 pixel-line"></div>
-      </div>
+      <div class="container-pixel w-full">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12 py-16">
 
-      <!-- 六大模块导航 -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-5 mb-8">
-        {sections.map((section, index) => (
-          <a
-            href={section.href}
-            class="pixel-card p-5 text-center card-hover group animate-fade-in relative overflow-hidden"
-            style={`animation-delay: ${index * 0.07}s; background: white;`}
-          >
-            {section.isNew && (
-              <div class="absolute top-2 right-2 px-1.5 py-0.5 bg-[#4CAF50] text-white text-[10px] pixel-font border border-[#388E3C]">
-                NEW
-              </div>
-            )}
+          <!-- 左列：文字区 -->
+          <div class="flex-1 max-w-xl animate-fade-in">
 
-            <!-- MC方块图标 -->
-            <div
-              class="w-16 h-16 mx-auto mb-4 border-4 border-[#654321] flex items-center justify-center relative overflow-hidden transition-transform group-hover:scale-105"
-              style={`background: linear-gradient(180deg, ${section.blockColor}dd 0%, ${section.blockColor}99 100%); box-shadow: inset 0 4px 0 rgba(255,255,255,0.25), inset 0 -4px 0 rgba(0,0,0,0.18), 3px 3px 0 #654321;`}
-            >
-              <div class="absolute top-0 left-0 right-0 h-[25%] bg-white/10"></div>
-              <img src={section.icon} alt={section.title} class="w-10 h-10 object-contain mc-icon relative z-10" />
+            <!-- 小徽章 -->
+            <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 border-2 border-[#654321] bg-[#FBF2DB]" style="box-shadow: 2px 2px 0 #A0522D;">
+              <img src="/images/textures/block/grass_block_side.png" alt="" class="w-4 h-4 mc-icon" />
+              <span class="pixel-font text-[#593925] text-xs">欢迎来到山禾的世界</span>
             </div>
 
-            <!-- 英文小标签 -->
-            <div class="text-[11px] text-[#7A4A2A] mb-1 pixel-font tracking-wide">{section.label}</div>
+            <!-- 超大标题 -->
+            <h1 class="pixel-font leading-tight mb-4">
+              <span class="block text-[#593925]" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">你好，我是</span>
+              <span class="block text-[#388E3C]" style="font-size: clamp(3.5rem, 9vw, 6.5rem); text-shadow: 4px 4px 0 #654321, 6px 6px 0 #A0522D;">山禾</span>
+            </h1>
 
-            <!-- 中文标题 -->
-            <h3 class="pixel-font text-[15px] text-[#4A2C1A] mb-2 group-hover:text-[#388E3C] transition-colors leading-tight">
-              {section.title}
-            </h3>
+            <!-- 副标题 -->
+            <p class="pixel-font text-[#8B4513] mb-3" style="font-size: clamp(1rem, 2.5vw, 1.25rem);">
+              构建 AI/Agent 时代的 <span class="text-[#388E3C]">个人操作系统</span>
+            </p>
 
             <!-- 描述 -->
-            <p class="text-xs text-[#7A4A2A] leading-relaxed">{section.desc}</p>
+            <p class="text-[#6B3A2A] leading-relaxed mb-8 max-w-md" style="font-size: 0.95rem;">
+              热爱技术与创造的开发者。探索人类智慧与 AI 协作的边界，
+              相信工具改变思维，思维改变世界。
+            </p>
 
-            <!-- 进入箭头 -->
-            <div class="mt-3 text-xs text-[#388E3C] opacity-0 group-hover:opacity-100 transition-opacity pixel-font">
-              进入 →
+            <!-- CTA 按钮 -->
+            <div class="flex flex-wrap gap-4">
+              <a href="/about" class="pixel-btn flex items-center gap-2 px-6 py-3 text-base">
+                <img src="/images/textures/item/knowledge_book.png" alt="" class="w-5 h-5 mc-icon" />
+                探索我的OS
+              </a>
+              <a href="/live"
+                 class="flex items-center gap-2 px-6 py-3 border-4 border-[#654321] bg-white text-[#593925] pixel-font text-base transition-all hover:-translate-y-0.5 hover:bg-[#E8F5E9] hover:text-[#388E3C]"
+                 style="box-shadow: 4px 4px 0 #8B4513;">
+                <span class="w-2 h-2 bg-[#4CAF50] rounded-full animate-pulse flex-shrink-0"></span>
+                与 AI 分身对话
+              </a>
             </div>
-          </a>
-        ))}
+          </div>
+
+          <!-- 右列：MC角色区 -->
+          <div class="flex-shrink-0 animate-fade-in delay-200">
+            <div class="relative">
+
+              <!-- 主角色块：大草方块人 -->
+              <div class="relative w-56 h-56 md:w-72 md:h-72 animate-float">
+                <!-- 草方块背景 -->
+                <div class="absolute inset-0 border-4 border-[#654321] overflow-hidden"
+                     style="box-shadow: 8px 8px 0 #8B4513; background: #4CAF50;">
+                  <div class="absolute top-0 left-0 right-0 h-[28%] bg-[#66BB6A]"></div>
+                  <div class="absolute bottom-0 left-0 right-0 h-[72%] bg-[#8B4513]"></div>
+                  <!-- 纹理叠加 -->
+                  <div class="absolute top-0 left-0 right-0 h-[28%] opacity-30"
+                       style="background-image: url('/images/textures/block/grass_block_top.png'); background-repeat: repeat; background-size: 32px 32px; image-rendering: pixelated;"></div>
+                  <div class="absolute bottom-0 left-0 right-0 h-[72%] opacity-20"
+                       style="background-image: url('/images/textures/block/dirt.png'); background-repeat: repeat; background-size: 32px 32px; image-rendering: pixelated;"></div>
+                </div>
+                <!-- 玩家图标 -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <img src="/images/icons/player.png" alt="山禾" class="mc-icon relative z-10"
+                       style="width: 75%; height: 75%; object-fit: contain;" />
+                </div>
+              </div>
+
+              <!-- 浮动状态徽章 -->
+              <div class="absolute -top-3 -right-3 md:-top-4 md:-right-4 flex items-center gap-1.5 px-3 py-1.5 bg-[#388E3C] border-2 border-[#2E7D32] pixel-font text-white text-xs"
+                   style="box-shadow: 2px 2px 0 #1B5E20;">
+                <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                在线 · 开放合作
+              </div>
+
+              <!-- 浮动 MC 物品装饰 -->
+              <div class="absolute -bottom-4 -left-6 animate-float" style="animation-delay: 0.8s;">
+                <div class="w-10 h-10 border-2 border-[#654321] bg-[#FBF2DB] flex items-center justify-center" style="box-shadow: 2px 2px 0 #8B4513;">
+                  <img src="/images/textures/item/diamond.png" alt="" class="w-7 h-7 mc-icon" />
+                </div>
+              </div>
+              <div class="absolute -top-2 -left-8 animate-float" style="animation-delay: 1.6s;">
+                <div class="w-9 h-9 border-2 border-[#654321] bg-[#FBF2DB] flex items-center justify-center" style="box-shadow: 2px 2px 0 #8B4513;">
+                  <img src="/images/textures/item/nether_star.png" alt="" class="w-6 h-6 mc-icon" />
+                </div>
+              </div>
+              <div class="absolute bottom-8 -right-8 animate-float" style="animation-delay: 2.4s;">
+                <div class="w-9 h-9 border-2 border-[#654321] bg-[#FBF2DB] flex items-center justify-center" style="box-shadow: 2px 2px 0 #8B4513;">
+                  <img src="/images/textures/item/experience_bottle.png" alt="" class="w-6 h-6 mc-icon" />
+                </div>
+              </div>
+
+              <!-- Lv 标签 -->
+              <div class="absolute -bottom-4 right-0 px-2 py-1 bg-[#593925] border-2 border-[#654321] pixel-font text-[#FFD700] text-xs" style="box-shadow: 2px 2px 0 #8B4513;">
+                Lv.3 初级开发者
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-    </div>
+      <!-- SCROLL 提示 -->
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[#A0522D] animate-bounce">
+        <span class="pixel-font text-xs">SCROLL</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== 模块导航：向下滚动后展示 ===== -->
+    <section class="py-20 bg-[#FBF2DB] border-t-4 border-[#654321]">
+      <div class="container-pixel">
+
+        <!-- 标题 -->
+        <div class="text-center mb-12">
+          <h2 class="pixel-font text-3xl text-[#388E3C] mb-2" style="text-shadow: 2px 2px 0 #654321;">探索地图</h2>
+          <p class="text-[#8B4513] text-sm">选择一个方向，开始探索</p>
+          <div class="pixel-line max-w-xs mx-auto mt-4"></div>
+        </div>
+
+        <!-- 6 模块网格 -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-5 max-w-3xl mx-auto">
+          {sections.map((section, index) => (
+            <a
+              href={section.href}
+              class="pixel-card p-5 text-center card-hover group animate-fade-in relative overflow-hidden bg-white"
+              style={`animation-delay: ${index * 0.07}s;`}
+            >
+              {section.isNew && (
+                <div class="absolute top-2 right-2 px-1.5 py-0.5 bg-[#4CAF50] text-white text-[10px] pixel-font border border-[#388E3C]">
+                  NEW
+                </div>
+              )}
+
+              <!-- 方块图标 -->
+              <div
+                class="w-14 h-14 mx-auto mb-3 border-4 border-[#654321] flex items-center justify-center relative overflow-hidden transition-transform group-hover:scale-110"
+                style={`background: linear-gradient(180deg, ${section.blockColor}ee 0%, ${section.blockColor}99 100%); box-shadow: inset 0 3px 0 rgba(255,255,255,0.25), inset 0 -3px 0 rgba(0,0,0,0.18), 3px 3px 0 #654321;`}
+              >
+                <div class="absolute top-0 left-0 right-0 h-[25%] bg-white/10"></div>
+                <img src={section.icon} alt={section.title} class="w-9 h-9 object-contain mc-icon relative z-10" />
+              </div>
+
+              <!-- 英文小标 -->
+              <div class="text-[11px] text-[#A0522D] mb-1 pixel-font">{section.label}</div>
+
+              <!-- 中文标题 -->
+              <h3 class="pixel-font text-[15px] text-[#4A2C1A] mb-1.5 group-hover:text-[#388E3C] transition-colors leading-tight">
+                {section.title}
+              </h3>
+
+              <!-- 描述 -->
+              <p class="text-xs text-[#7A4A2A] leading-relaxed">{section.desc}</p>
+
+              <!-- Hover 箭头 -->
+              <div class="mt-2 text-xs text-[#388E3C] opacity-0 group-hover:opacity-100 transition-opacity pixel-font">
+                进入 →
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <Footer />
